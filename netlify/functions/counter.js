@@ -1,12 +1,31 @@
+const https = require('https');
+
 exports.handler = async function() {
-  const count = parseInt(process.env.JOUEURS_INSCRITS || '0');
-  return {
-    statusCode: 200,
-    headers: {
-      "Content-Type": "application/json",
-      "Access-Control-Allow-Origin": "*",
-      "Cache-Control": "no-cache, no-store"
-    },
-    body: JSON.stringify({ count })
-  };
+  return new Promise((resolve) => {
+    https.get(
+      'https://raw.githubusercontent.com/TON_USERNAME/up10padel/main/count.json',
+      (res) => {
+        let data = '';
+        res.on('data', chunk => data += chunk);
+        res.on('end', () => {
+          try {
+            const json = JSON.parse(data);
+            resolve({
+              statusCode: 200,
+              headers: {
+                "Content-Type": "application/json",
+                "Access-Control-Allow-Origin": "*",
+                "Cache-Control": "no-cache"
+              },
+              body: JSON.stringify({ count: json.count || 0 })
+            });
+          } catch(e) {
+            resolve({ statusCode: 200, headers: {"Access-Control-Allow-Origin":"*"}, body: '{"count":0}' });
+          }
+        });
+      }
+    ).on('error', () => {
+      resolve({ statusCode: 200, headers: {"Access-Control-Allow-Origin":"*"}, body: '{"count":0}' });
+    });
+  });
 };
