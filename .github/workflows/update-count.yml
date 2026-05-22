@@ -1,0 +1,26 @@
+name: Update count
+
+on:
+  repository_dispatch:
+    types: [form-submission]
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      
+      - name: Increment count
+        run: |
+          COUNT=$(cat count.json | python3 -c "import sys,json; print(json.load(sys.stdin)['count'])")
+          NEW=$((COUNT + 1))
+          echo "{\"count\": $NEW}" > count.json
+          echo "Nouveau compteur: $NEW"
+      
+      - name: Commit
+        run: |
+          git config user.email "bot@up10padel.com"
+          git config user.name "UP10PADEL Bot"
+          git add count.json
+          git commit -m "Compteur: +1 inscription"
+          git push
