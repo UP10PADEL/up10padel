@@ -3,7 +3,7 @@ const https = require('https');
 exports.handler = async function() {
   return new Promise((resolve) => {
     https.get(
-      'https://raw.githubusercontent.com/TON_USERNAME/up10padel/main/count.json',
+      'https://raw.githubusercontent.com/UP10PADEL/up10padel/main/count.json',
       (res) => {
         let data = '';
         res.on('data', chunk => data += chunk);
@@ -20,12 +20,20 @@ exports.handler = async function() {
               body: JSON.stringify({ count: json.count || 0 })
             });
           } catch(e) {
-            resolve({ statusCode: 200, headers: {"Access-Control-Allow-Origin":"*"}, body: '{"count":0}' });
+            resolve({
+              statusCode: 200,
+              headers: { "Access-Control-Allow-Origin": "*" },
+              body: '{"count":0}'
+            });
           }
         });
       }
     ).on('error', () => {
-      resolve({ statusCode: 200, headers: {"Access-Control-Allow-Origin":"*"}, body: '{"count":0}' });
+      resolve({
+        statusCode: 200,
+        headers: { "Access-Control-Allow-Origin": "*" },
+        body: '{"count":0}'
+      });
     });
   });
 };
