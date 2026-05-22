@@ -7,16 +7,18 @@ on:
 jobs:
   update:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     steps:
-      - uses: actions/checkout@v3
-      
+      - uses: actions/checkout@v4
+
       - name: Increment count
         run: |
           COUNT=$(cat count.json | python3 -c "import sys,json; print(json.load(sys.stdin)['count'])")
           NEW=$((COUNT + 1))
           echo "{\"count\": $NEW}" > count.json
           echo "Nouveau compteur: $NEW"
-      
+
       - name: Commit
         run: |
           git config user.email "bot@up10padel.com"
@@ -24,3 +26,7 @@ jobs:
           git add count.json
           git commit -m "Compteur: +1 inscription"
           git push
+
+      - name: Trigger Netlify deploy
+        run: |
+          curl -X POST "https://api.netlify.com/build_hooks/6a102e672f084fdefe8b95fc"
