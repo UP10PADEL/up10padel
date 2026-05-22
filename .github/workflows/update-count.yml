@@ -3,6 +3,7 @@ name: Update count
 on:
   repository_dispatch:
     types: [form-submission]
+  workflow_dispatch:
 
 jobs:
   update:
