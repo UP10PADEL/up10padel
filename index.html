@@ -40,7 +40,9 @@ h2{font-size:clamp(28px,4vw,40px);font-weight:800;line-height:1.15;letter-spacin
 ul.ck{list-style:none}ul.ck.two{columns:2;column-gap:40px}ul.ck li{padding:9px 0 9px 32px;position:relative;font-size:15.5px;border-bottom:1px solid var(--soft)}
 ul.ck li:before{content:"";position:absolute;left:0;top:15px;width:16px;height:16px;border-radius:50%;background:var(--blue)}
 ul.ck li:after{content:"";position:absolute;left:5px;top:19px;width:4px;height:7px;border:solid #fff;border-width:0 2px 2px 0;transform:rotate(45deg)}
-.lv{display:flex;gap:12px}.lv div{flex:1;text-align:center}.lv i{display:block;height:10px;border-radius:10px;margin-bottom:8px}.lv b{display:block;font-size:20px}.lv span{font-size:12px;color:var(--muted);font-weight:600}
+.lv{display:flex;gap:12px}.lv div{flex:1;min-width:0;text-align:center}.lv i{display:block;height:10px;border-radius:10px;margin-bottom:8px}.lv b{display:block;font-size:20px}.lv span{display:block;font-size:12px;color:var(--muted);font-weight:600;}
+@media(max-width:560px){.lv{gap:6px}.lv b{font-size:15px}.lv span{font-size:10px}.lv i{height:8px}}
+@media(max-width:360px){.lv{gap:3px}.lv span{font-size:8.5px}.lv b{font-size:13px}}
 .big{font-size:54px;font-weight:800;color:var(--blue);line-height:1}
 .fond{background:var(--ink);color:#fff;border-radius:28px;padding:56px;display:grid;grid-template-columns:1.2fr 1fr;gap:40px;align-items:center}
 .fond h2{color:#fff}.fond p{color:#c9d8e6}.fond .box{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.18);border-radius:20px;padding:26px}
@@ -78,19 +80,19 @@ footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;
 <h1>Trouvez. Jouez. <span>Progressez.</span></h1>
 <p class="lead">L'application qui réunit joueurs et clubs de padel : des matchs à votre niveau, réservés et payés dans l'app. Lancement 2026 dans le sud de la France. Tout se passe dans l'app, de l'inscription au paiement.</p>
 <div class="cta"><a class="btn p" href="https://docs.google.com/forms/d/e/1FAIpQLSeW7YUet-s4bH8RJMtHE76PfXBrwQZJt5zAEdoCC4aXvYbucw/viewform" target="_blank" rel="noopener">Je rejoins la liste d'attente</a><a class="btn s" href="#clubs">Je suis un club</a></div>
-<div class="pills"><span>Sans contrat</span><span>Sans engagement</span><span>Paiement 100 % dans l'app</span></div>
+<div class="pills"><span>Inscription en ligne</span><span>Sans engagement</span><span>Paiement 100 % dans l'app</span></div>
 <p class="proof"><strong id="live-count">…</strong> joueurs déjà inscrits sur la liste d'attente</p>
 </div></div>
 
 <section id="app"><div class="wrap">
 <span class="kick">L'application</span><h2>Tout se passe <span>dans l'app</span></h2>
-<p class="sub">Inscription, réservation, paiement, facturation : sans contrat à signer et sans engagement.</p>
+<p class="sub">Inscription, réservation, paiement, facturation : sans paperasse et sans engagement.</p>
 <div class="grid g2">
 <div class="card"><h3 style="margin-bottom:10px">Pour les clubs</h3><ul class="ck">
-<li>Inscription directe dans l'app, sans contrat</li><li>Tableau de bord complet avec agenda</li><li>Réservation automatique des terrains</li><li>Paiement dans l'app, virement sous 48 h</li><li>Facturation automatique</li><li>Aucun abonnement, aucun engagement</li></ul></div>
+<li>Inscription directe dans l'app, 100 % en ligne</li><li>Tableau de bord complet avec agenda</li><li>Réservation automatique des terrains</li><li>Paiement dans l'app, versé au club</li><li>Facturation automatique</li><li>Aucun abonnement, aucun engagement</li></ul></div>
 <div class="card"><h3 style="margin-bottom:10px">Pour les joueurs</h3><ul class="ck">
 <li>Inscription directe dans l'app</li><li>Matchs par niveau, score ELO en temps réel</li><li>Joueurs et matchs à proximité</li><li>Réservation en binôme</li><li>Réservation et paiement 100 % dans l'app</li><li>Chat privé par match et classement</li></ul></div></div>
-<div class="pills" style="margin-top:34px"><span>Sans contrat</span><span>Sans engagement</span><span>Paiement 100 % dans l'app</span></div>
+<div class="pills" style="margin-top:34px"><span>Inscription en ligne</span><span>Sans engagement</span><span>Paiement 100 % dans l'app</span></div>
 </div></section>
 
 <section class="alt" id="ecrans"><div class="wrap">
@@ -120,7 +122,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;
 <div class="card"><h3>Agenda club intégré</h3><p>Réserve un terrain : le paiement est automatique dans l'app.</p></div>
 </div>
 <div class="card" style="margin-top:26px"><h3 style="text-align:center;margin-bottom:18px">Le niveau dynamique, de 1.0 à 10.0</h3>
-<div class="lv"><div><i style="background:#B9D3E6"></i><b>1-2</b><span>Débutant</span></div><div><i style="background:#8FC0E3"></i><b>3-4</b><span>Initié</span></div><div><i style="background:#4BA3D9"></i><b>5-6</b><span>Intermédiaire</span></div><div><i style="background:#2E7FB5"></i><b>7-8</b><span>Confirmé</span></div><div><i style="background:#0A1628"></i><b>9-10</b><span>Expert</span></div></div></div>
+<div class="lv"><div><i style="background:#B9D3E6"></i><b>1-2</b><span>Débutant</span></div><div><i style="background:#8FC0E3"></i><b>3-4</b><span>Initié</span></div><div><i style="background:#4BA3D9"></i><b>5-6</b><span>Inter.</span></div><div><i style="background:#2E7FB5"></i><b>7-8</b><span>Confirmé</span></div><div><i style="background:#0A1628"></i><b>9-10</b><span>Expert</span></div></div></div>
 <div style="text-align:center;margin-top:36px" id="waitlist"><div class="cta"><a class="btn p" href="https://docs.google.com/forms/d/e/1FAIpQLSeW7YUet-s4bH8RJMtHE76PfXBrwQZJt5zAEdoCC4aXvYbucw/viewform" target="_blank" rel="noopener">Je rejoins la liste d'attente →</a></div>
 <p class="sub" style="margin:14px auto 0;font-size:14px">Les premiers inscrits auront accès en priorité à la bêta. Pas de spam, désabonnement en 1 clic.</p></div>
 </div></section>
@@ -130,11 +132,11 @@ footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;
 <p class="sub">Chaque créneau vide en semaine est un revenu perdu. UP10PADEL vous amène des joueurs de proximité, déjà classés par niveau.</p>
 <div class="grid g3">
 <div class="card"><div class="big">0 €</div><h3 style="margin-top:12px">d'abonnement</h3><p>Aucun abonnement, aucun frais d'inscription, aucun engagement de durée.</p></div>
-<div class="card"><div class="big">0</div><h3 style="margin-top:12px">contrat à signer</h3><p>Inscription en ligne, aucune exclusivité. Les paiements arrivent par virement sous 48 h.</p></div>
+<div class="card"><div class="big">0</div><h3 style="margin-top:12px">exclusivité</h3><p>Vous restez libre de travailler avec vos autres outils. Les paiements sont versés automatiquement au club.</p></div>
 <div class="card"><div class="big">100 %</div><h3 style="margin-top:12px">dans l'app</h3><p>Inscription en ligne, tableau de bord complet avec agenda, paiement et facturation automatique.</p></div>
 </div>
 <div class="card" style="margin-top:22px"><ul class="ck two">
-<li>Inscription directe, sans contrat à signer</li><li>Tableau de bord avec agenda</li><li>Taux de remplissage et statistiques</li><li>Réservation automatique des terrains</li><li>Facturation automatique</li><li>Aucun engagement, aucune exclusivité</li></ul></div>
+<li>Inscription directe, 100 % en ligne</li><li>Tableau de bord avec agenda</li><li>Taux de remplissage et statistiques</li><li>Réservation automatique des terrains</li><li>Facturation automatique</li><li>Aucun engagement, aucune exclusivité</li></ul></div>
 <div class="cta" style="justify-content:flex-start;margin-top:30px"><a class="btn p" href="mailto:contact@up10padel.com?subject=Club%20-%20Devenir%20club%20partenaire">Devenir club partenaire</a></div>
 </div></section>
 
